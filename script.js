@@ -48,7 +48,8 @@ function game() {
         let roundWinner = playRound(question.toLowerCase(),getComputerChoice());
         
         if (roundWinner === "tie") {
-            console.log("this is a tie")
+            playerScore++;
+            computerScore++;
         }
         else if (roundWinner === "player") {
             playerScore++;
