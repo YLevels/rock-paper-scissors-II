@@ -38,44 +38,38 @@ function playRound (playerSelection, computerSelection) {
     return winner;
 }
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    let gameWinner = "";
+// function game() {
+//     let playerScore = 0;
+//     let computerScore = 0;
+//     let gameWinner = "";
     
-    for (let i = 0; i < 5; i++) {
-        let question = prompt("Do you choose rock, paper, or scissors?");
-        let roundWinner = playRound(question.toLowerCase(),getComputerChoice());
+//     for (let i = 0; i < 5; i++) {
+//         let question = prompt("Do you choose rock, paper, or scissors?");
+//         let roundWinner = playRound(question.toLowerCase(),getComputerChoice());
         
-        if (roundWinner === "tie") {
-            playerScore++;
-            computerScore++;
-        }
-        else if (roundWinner === "player") {
-            playerScore++;
-        }
-        else {
-            computerScore++;
-        }
-        console.log(roundWinner + " won this round");
-    }
+//         if (roundWinner === "tie") {
+//             playerScore++;
+//             computerScore++;
+//         }
+//         else if (roundWinner === "player") {
+//             playerScore++;
+//         }
+//         else {
+//             computerScore++;
+//         }
+//         console.log(roundWinner + " won this round");
+//     }
 
-    if (playerScore === computerScore) {
-        gameWinner = "It is a tie";
-    }
-    else if (playerScore > computerScore) {
-        gameWinner = "player wins!";
-    }
-    else {
-        gameWinner = "computer wins!";
-    }
+//     if (playerScore === computerScore) {
+//         gameWinner = "It is a tie";
+//     }
+//     else if (playerScore > computerScore) {
+//         gameWinner = "player wins!";
+//     }
+//     else {
+//         gameWinner = "computer wins!";
+//     }
 
-    return gameWinner;
-}
+//     return gameWinner;
+// }
 
-// const playerSelection = "scissors";
-// console.log("The player selected: " + playerSelection);
-// const computerSelection = getComputerChoice();
-// console.log("The computer selected: " + computerSelection);
-// console.log(playRound(playerSelection, computerSelection));
-console.log(game());
