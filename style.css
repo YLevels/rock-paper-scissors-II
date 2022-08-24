@@ -19,11 +19,20 @@ body {
 
 .title {
     font-size: 48px;
+    font-weight: bold;
+}
+
+.begingame, .playagain {
+    color: lavender;
+    background-color: darkorchid;
+    font-size: 24px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
 }
 
 .player-choices {
     display: flex;
-    border-style: solid;
     justify-content: space-around;
     gap: 20px;
     height: 250px;
@@ -49,3 +58,13 @@ span {
     max-width: auto;
 }
 
+.round-results, .score-keeper {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 10px;
+    border-color: black;
+    padding: 10px;
+    width: 500px;
+}
