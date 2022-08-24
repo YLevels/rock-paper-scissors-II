@@ -1,3 +1,4 @@
+//starts the game when "Begin Game" is pushed
 const gameContainer = document.querySelector(".game-container");
 const gameStart = document.querySelector(".begingame")
 
@@ -8,9 +9,23 @@ function startGame () {
 
 gameStart.addEventListener("click", startGame);
 
-const pchoices = document.querySelector(".player-choices");
+//returns the player choice for each round
+let playerChoice = "";
+const rockChoice = document.querySelector(".rock-choice");
+const paperChoice = document.querySelector(".paper-choice");
+const scissorsChoice = document.querySelector(".scissors-choice");
 
+rockChoice.addEventListener("click", () => {
+    playerChoice = "rock";
+});
 
+paperChoice.addEventListener("click", () => {
+    playerChoice = "paper";
+});
+
+scissorsChoice.addEventListener("click", () => {
+    playerChoice = "scissors";
+});
 
 //randomly returns either 'rock', 'paper', or 'scissors'
 function getComputerChoice () {
@@ -101,5 +116,5 @@ function displayResults () {
 // }
 
 
-console.log(playRound("rock",getComputerChoice()));
+//console.log(playRound("rock",getComputerChoice()));
 
