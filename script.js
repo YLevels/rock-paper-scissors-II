@@ -1,3 +1,9 @@
+const pchoices = document.querySelector(".player-choices");
+
+function startGame () {
+
+}
+
 //randomly returns either 'rock', 'paper', or 'scissors'
 function getComputerChoice () {
     let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -14,28 +20,41 @@ function getComputerChoice () {
   }
 
 //plays a single round of the game
-function playRound (playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     let playerMove = playerSelection.toLowerCase();
     let computerMove = computerSelection;
-    let message = "";
     let winner = "";
 
     if (playerMove === computerMove) {
-        message = "You chose " + playerMove + ". The computer chose " + computerMove + ". It is a tie.";
         winner = "tie";
     }
 
     if ((playerMove === "rock" && computerMove === "scissors") || (playerMove === "paper" && computerMove === "rock") || (playerMove === "scissors" && computerMove === "paper")) {
-        message = "You chose " + playerMove + ". The computer chose " + computerMove + ". You win!";
         winner = "player";
     }
 
     if ((playerMove === "rock" && computerMove === "paper") || (playerMove === "paper" && computerMove === "scissors") || (playerMove === "scissors" && computerMove === "rock")) {
-        message = "You chose " + playerMove + ". The computer chose " + computerMove + ". You lose.";
         winner = "computer";
     }
 
     return winner;
+}
+
+
+
+function displayResults () {
+    let message = "";
+
+    if (winnerOfRound === "tie") {
+        message = "You chose " + playerMove + ". The computer chose " + computerMove + ". It is a tie.";
+    }
+    else if (winnerOfRound === "player") {
+        message = "You chose " + playerMove + ". The computer chose " + computerMove + ". You win!";
+    }
+    else {
+        message = "You chose " + playerMove + ". The computer chose " + computerMove + ". You lose.";
+    }
+    return message;
 }
 
 // function game() {
@@ -73,3 +92,8 @@ function playRound (playerSelection, computerSelection) {
 //     return gameWinner;
 // }
 
+
+console.log(playRound("rock",getComputerChoice()));
+
+const gameStart = document.querySelector(".begingame");
+gameStart.addEventListener("click", startGame);

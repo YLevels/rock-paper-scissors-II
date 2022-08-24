@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="header">
@@ -11,10 +12,31 @@
     <button class="begingame">Begin Game</button>
   </div>
   <div class="game-container">
-    <div class="player-choices"></div>
-    <div class="round-results"></div>
-    <div class="score-keeper"></div>
-    <div class="play-again"></div>
+    <div class="player-choices">
+      <div class="rock-choice">
+        <input type="image" src="images/rock.png" id="rock-button" value="Rock"></input>
+        <span>Rock</span>
+      </div>
+      <div class="paper-choice">
+        <input type="image" src="images/paper.png" id="paper-button" value="Paper"></input>
+        <span>Paper</span>
+      </div>
+      <div class="scissors-choice">
+        <input type="image" src="images/scissors.png" id="scissors-button" value="Scissors"></input>
+        <span>Scissors</span>
+      </div>
+    </div>
+    <div class="round-results">
+      <div class="round">Round #</div>
+      <div class="results">Here are the results</div>
+    </div>
+    <div class="score-keeper">
+      <div class="player-score">0</div>
+      <div class="computer-score">0</div>
+    </div>
+    <div class="play-again">
+      <button class="playagain">Play Again</button>
+    </div>
   </div>
 </body>
 <script src="script.js"></script>
