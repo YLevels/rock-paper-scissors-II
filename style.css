@@ -17,6 +17,10 @@ body {
     gap: 20px;
 }
 
+.game-container{
+    display: none;
+}
+
 .title {
     font-size: 48px;
     font-weight: bold;

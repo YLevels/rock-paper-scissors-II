@@ -1,8 +1,16 @@
-const pchoices = document.querySelector(".player-choices");
+const gameContainer = document.querySelector(".game-container");
+const gameStart = document.querySelector(".begingame")
 
 function startGame () {
-
+    gameContainer.style.display="flex";
+    gameStart.style.display="none";
 }
+
+gameStart.addEventListener("click", startGame);
+
+const pchoices = document.querySelector(".player-choices");
+
+
 
 //randomly returns either 'rock', 'paper', or 'scissors'
 function getComputerChoice () {
@@ -95,5 +103,3 @@ function displayResults () {
 
 console.log(playRound("rock",getComputerChoice()));
 
-const gameStart = document.querySelector(".begingame");
-gameStart.addEventListener("click", startGame);
