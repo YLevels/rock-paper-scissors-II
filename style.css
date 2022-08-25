@@ -35,7 +35,7 @@ body {
     border-radius: 10px;
 }
 
-.player-choices {
+.choices {
     display: flex;
     justify-content: space-around;
     gap: 20px;

@@ -14,17 +14,24 @@ let playerChoice = "";
 const rockChoice = document.querySelector(".rock-choice");
 const paperChoice = document.querySelector(".paper-choice");
 const scissorsChoice = document.querySelector(".scissors-choice");
+let result = "";
 
 rockChoice.addEventListener("click", () => {
     playerChoice = "rock";
+    result = playRound(playerChoice, getComputerChoice());
+    console.log(result);
 });
 
 paperChoice.addEventListener("click", () => {
     playerChoice = "paper";
+    result = playRound(playerChoice, getComputerChoice());
+    console.log(result);
 });
 
 scissorsChoice.addEventListener("click", () => {
     playerChoice = "scissors";
+    result = playRound(playerChoice, getComputerChoice());
+    console.log(result);
 });
 
 //randomly returns either 'rock', 'paper', or 'scissors'
@@ -63,7 +70,9 @@ function playRound(playerSelection, computerSelection) {
     return winner;
 }
 
-
+rockChoice.onclick = (playRound(playerChoice,getComputerChoice()));
+paperChoice.onclick = (playRound(playerChoice,getComputerChoice()));
+scissorsChoice.onclick = (playRound(playerChoice,getComputerChoice()));
 
 function displayResults () {
     let message = "";
