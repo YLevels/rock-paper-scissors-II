@@ -9,30 +9,7 @@ function startGame () {
 
 gameStart.addEventListener("click", startGame);
 
-//returns the player choice for each round
-let playerChoice = "";
-const rockChoice = document.querySelector(".rock-choice");
-const paperChoice = document.querySelector(".paper-choice");
-const scissorsChoice = document.querySelector(".scissors-choice");
-let result = "";
-
-rockChoice.addEventListener("click", () => {
-    playerChoice = "rock";
-    result = playRound(playerChoice, getComputerChoice());
-    console.log(result);
-});
-
-paperChoice.addEventListener("click", () => {
-    playerChoice = "paper";
-    result = playRound(playerChoice, getComputerChoice());
-    console.log(result);
-});
-
-scissorsChoice.addEventListener("click", () => {
-    playerChoice = "scissors";
-    result = playRound(playerChoice, getComputerChoice());
-    console.log(result);
-});
+//let playerMove = playerChoice;
 
 //randomly returns either 'rock', 'paper', or 'scissors'
 function getComputerChoice () {
@@ -49,42 +26,70 @@ function getComputerChoice () {
     return computerChoice;
   }
 
+  //returns the player choice for each round
+let playerChoice = "";
+const rockChoice = document.querySelector(".rock-choice");
+const paperChoice = document.querySelector(".paper-choice");
+const scissorsChoice = document.querySelector(".scissors-choice");
+let result = "";
+
+
+let computerMove = "";
+
+rockChoice.addEventListener("click", () => {
+    playerChoice = "rock";
+    computerMove = getComputerChoice();
+    result = playRound(playerChoice, computerMove);
+    console.log(displayResults());
+});
+
+paperChoice.addEventListener("click", () => {
+    playerChoice = "paper";
+    result = playRound(playerChoice, computerMove);
+    console.log(displayResults());
+});
+
+scissorsChoice.addEventListener("click", () => {
+    playerChoice = "scissors";
+    result = playRound(playerChoice, computerMove);
+    console.log(displayResults());
+});
+
 //plays a single round of the game
 function playRound(playerSelection, computerSelection) {
-    let playerMove = playerSelection.toLowerCase();
-    let computerMove = computerSelection;
+
     let winner = "";
 
-    if (playerMove === computerMove) {
+    if (playerChoice === computerMove) {
         winner = "tie";
     }
 
-    if ((playerMove === "rock" && computerMove === "scissors") || (playerMove === "paper" && computerMove === "rock") || (playerMove === "scissors" && computerMove === "paper")) {
+    if ((playerChoice === "rock" && computerMove === "scissors") || (playerChoice === "paper" && computerMove === "rock") || (playerChoice === "scissors" && computerMove === "paper")) {
         winner = "player";
     }
 
-    if ((playerMove === "rock" && computerMove === "paper") || (playerMove === "paper" && computerMove === "scissors") || (playerMove === "scissors" && computerMove === "rock")) {
+    if ((playerChoice === "rock" && computerMove === "paper") || (playerChoice === "paper" && computerMove === "scissors") || (playerChoice === "scissors" && computerMove === "rock")) {
         winner = "computer";
     }
 
     return winner;
 }
 
-rockChoice.onclick = (playRound(playerChoice,getComputerChoice()));
-paperChoice.onclick = (playRound(playerChoice,getComputerChoice()));
-scissorsChoice.onclick = (playRound(playerChoice,getComputerChoice()));
+// rockChoice.onclick = (playRound(playerChoice,getComputerChoice()));
+// paperChoice.onclick = (playRound(playerChoice,getComputerChoice()));
+// scissorsChoice.onclick = (playRound(playerChoice,getComputerChoice()));
 
 function displayResults () {
     let message = "";
 
-    if (winnerOfRound === "tie") {
-        message = "You chose " + playerMove + ". The computer chose " + computerMove + ". It is a tie.";
+    if (result === "tie") {
+        message = "You chose " + playerChoice + ". The computer chose " + computerMove + ". It is a tie.";
     }
-    else if (winnerOfRound === "player") {
-        message = "You chose " + playerMove + ". The computer chose " + computerMove + ". You win!";
+    else if (result === "player") {
+        message = "You chose " + playerChoice + ". The computer chose " + computerMove + ". You win!";
     }
     else {
-        message = "You chose " + playerMove + ". The computer chose " + computerMove + ". You lose.";
+        message = "You chose " + playerChoice + ". The computer chose " + computerMove + ". You lose.";
     }
     return message;
 }
