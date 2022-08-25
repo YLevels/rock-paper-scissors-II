@@ -42,7 +42,7 @@ body {
     height: 250px;
 }
 
-.rock-choice, .paper-choice, .scissors-choice {
+.choice {
     display: flex;
     flex-direction: column;
     align-items: center;
