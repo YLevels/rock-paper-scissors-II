@@ -5,6 +5,7 @@ const gamereset = document.querySelector(".play-again");
 const pscore = document.querySelector(".pscore");
 const cscore = document.querySelector(".cscore");
 const resultOfRound = document.querySelector(".results");
+const resultOfGame = document.querySelector(".result-of-the-game");
 
 //starts the game when "Begin Game" is pushed
 function showGame () {
@@ -113,13 +114,14 @@ if (roundNumber > 5) {
         gameWinner = "It is a tie";
     }
     else if (playerScore > computerScore) {
-        gameWinner = "player wins!";
+        gameWinner = "You win the game!";
     }
     else {
-        gameWinner = "computer wins!";
+        gameWinner = "The computer wins the game!";
     }
     gameContainer.style.display="none";
     gamereset.style.display="flex";
+    resultOfGame.textContent = gameWinner;
     console.log(gameWinner);
 
     return gameWinner;
