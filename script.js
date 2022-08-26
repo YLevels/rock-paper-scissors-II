@@ -3,6 +3,8 @@ const gameContainer = document.querySelector(".game-container");
 const gameStart = document.querySelector(".begingame")
 const resultsContainer = document.querySelector(".results-container");
 const gamereset = document.querySelector(".play-again");
+const pscore = document.querySelector(".pscore");
+const cscore = document.querySelector(".cscore");
 
 function showGame () {
     gameContainer.style.display="flex";
@@ -60,17 +62,19 @@ const scissorsChoice = document.getElementById("scissors-button");
 let winner = ""; 
 let playerScore = 0;
 let computerScore = 0;
-let computerMove = getComputerChoice();
+let computerMove = "";
 let gameWinner = "";
 let roundNumber = 1;  
 
 function playRound() {
     
 if (roundNumber <= 5) {
+    computerMove = getComputerChoice();
+
     if (playerChoice === computerMove) {
         winner = "tie";
 
-        resultOfRound.textContent = displayResults();
+        resultOfRound.textContent += "\n" + displayResults(winner);
         console.log("Player Score is:" + playerScore);
         console.log("Computer Score is:" + computerScore);
         console.log("The winner of" + roundNumber + "is: noone. It is a " + winner);
@@ -79,8 +83,9 @@ if (roundNumber <= 5) {
 
     if ((playerChoice === "rock" && computerMove === "scissors") || (playerChoice === "paper" && computerMove === "rock") || (playerChoice === "scissors" && computerMove === "paper")) {
         winner = "player";
-        resultOfRound.textContent = displayResults();
+        resultOfRound.textContent += "\n" + displayResults(winner);
         playerScore++;
+        pscore.textContent = playerScore;
         console.log("Player Score is:" + playerScore);
         console.log("Computer Score is:" + computerScore);
         console.log("The winner of" + roundNumber + "is:" + winner);
@@ -90,8 +95,9 @@ if (roundNumber <= 5) {
 
     if ((playerChoice === "rock" && computerMove === "paper") || (playerChoice === "paper" && computerMove === "scissors") || (playerChoice === "scissors" && computerMove === "rock")) {
         winner = "computer";
-        resultOfRound.textContent = displayResults();
+        resultOfRound.textContent += "\n" + displayResults(winner);
         computerScore++;
+        cscore.textContent = computerScore;
         console.log("Player Score is:" + playerScore);
         console.log("Computer Score is:" + computerScore);
         console.log("The winner of" + roundNumber + "is:" + winner);
@@ -119,13 +125,13 @@ if (roundNumber > 5) {
     //return winner;
 }
 
-function displayResults () {
+function displayResults (winner) {
     let message = "";
 
-    if (result === "tie") {
+    if (winner === "tie") {
         message = "You chose " + playerChoice + ". The computer chose " + computerMove + ". It is a tie.";
     }
-    else if (result === "player") {
+    else if (winner === "player") {
         message = "You chose " + playerChoice + ". The computer chose " + computerMove + ". You win!";
     }
     else {
