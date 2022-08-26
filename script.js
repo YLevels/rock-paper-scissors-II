@@ -13,6 +13,11 @@ function showGame () {
 
 gameStart.addEventListener("click", showGame);
 
+var playerChoices = document.querySelectorAll(".choice");
+  for (i = 0; i < playerChoices.length; i++) {
+    playerChoices.item(i).addEventListener("click", playRound) 
+    };
+
 //randomly returns either 'rock', 'paper', or 'scissors'
 function getComputerChoice () {
     let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -64,6 +69,8 @@ function playRound() {
 if (roundNumber <= 5) {
     if (playerChoice === computerMove) {
         winner = "tie";
+
+        resultOfRound.textContent = displayResults();
         console.log("Player Score is:" + playerScore);
         console.log("Computer Score is:" + computerScore);
         console.log("The winner of" + roundNumber + "is: noone. It is a " + winner);
@@ -72,6 +79,7 @@ if (roundNumber <= 5) {
 
     if ((playerChoice === "rock" && computerMove === "scissors") || (playerChoice === "paper" && computerMove === "rock") || (playerChoice === "scissors" && computerMove === "paper")) {
         winner = "player";
+        resultOfRound.textContent = displayResults();
         playerScore++;
         console.log("Player Score is:" + playerScore);
         console.log("Computer Score is:" + computerScore);
@@ -82,6 +90,7 @@ if (roundNumber <= 5) {
 
     if ((playerChoice === "rock" && computerMove === "paper") || (playerChoice === "paper" && computerMove === "scissors") || (playerChoice === "scissors" && computerMove === "rock")) {
         winner = "computer";
+        resultOfRound.textContent = displayResults();
         computerScore++;
         console.log("Player Score is:" + playerScore);
         console.log("Computer Score is:" + computerScore);
@@ -110,6 +119,23 @@ if (roundNumber > 5) {
     //return winner;
 }
 
+function displayResults () {
+    let message = "";
+
+    if (result === "tie") {
+        message = "You chose " + playerChoice + ". The computer chose " + computerMove + ". It is a tie.";
+    }
+    else if (result === "player") {
+        message = "You chose " + playerChoice + ". The computer chose " + computerMove + ". You win!";
+    }
+    else {
+        message = "You chose " + playerChoice + ". The computer chose " + computerMove + ". You lose.";
+    }
+    return message;
+}
+
+let resultOfRound = document.querySelector(".results");
+
 function updateScore() {
     if (result === "player") {
         playerScore++;
@@ -121,11 +147,6 @@ function updateScore() {
     }
     else return;
 }
-
-var playerChoices = document.querySelectorAll(".choice");
-  for (i = 0; i < playerChoices.length; i++) {
-    playerChoices.item(i).addEventListener("click", playRound) 
-    };
 
 // function game() {
 
@@ -192,22 +213,7 @@ let result = "";
 //plays a single round of the game
 
 
-function displayResults () {
-    let message = "";
 
-    if (result === "tie") {
-        message = "You chose " + playerChoice + ". The computer chose " + computerMove + ". It is a tie.";
-    }
-    else if (result === "player") {
-        message = "You chose " + playerChoice + ". The computer chose " + computerMove + ". You win!";
-    }
-    else {
-        message = "You chose " + playerChoice + ". The computer chose " + computerMove + ". You lose.";
-    }
-    return message;
-}
-
-let resultOfRound = document.querySelector(".results");
 //let playerScore = parseInt(document.querySelector(".pscore").textContent);
 //let computerScore = parseInt(document.querySelector(".cscore").textContent);
 
