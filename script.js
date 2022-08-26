@@ -24,36 +24,93 @@ function getComputerChoice () {
     return computerChoice;
   }
 
-  var playerChoices = document.querySelectorAll(".choice");
-  for (i = 0; i < playerChoices.length; i++) {
-    playerChoices.item(i).addEventListener("click", getPlayerChoice, true);
-  }
-
-  //returns the player choice for each round
-  function getPlayerChoice() {
-    let playerChoice = "";
-    const rockChoice = document.getElementById("rock-button");
-    const paperChoice = document.getElementById("paper-button");
-    const scissorsChoice = document.getElementById("scissors-button");
+//gets playerChoice by click on button
+let playerChoice = "";
+const rockChoice = document.getElementById("rock-button");
+const paperChoice = document.getElementById("paper-button");
+const scissorsChoice = document.getElementById("scissors-button");
 
     rockChoice.addEventListener("click", () => {
         playerChoice = "rock";
         console.log(playerChoice);
-    });
-
+        return playerChoice;
+  });
+   
     paperChoice.addEventListener("click", () => {
         playerChoice = "paper";
         console.log(playerChoice);
+        return playerChoice;
     });
-
-    scissorsChoice.addEventListener("click", () => {
+    
+    scissorsChoice.addEventListener("click", () => { 
         playerChoice = "scissors";
         console.log(playerChoice);
+        return playerChoice;
     });
+ 
+  function playRound() {
+    let computerMove = getComputerChoice();
+    let winner = "";
 
-    return playerChoice;
-  }
+    if (playerChoice === computerMove) {
+        winner = "tie";
+        console.log(winner);
+    }
 
+    if ((playerChoice === "rock" && computerMove === "scissors") || (playerChoice === "paper" && computerMove === "rock") || (playerChoice === "scissors" && computerMove === "paper")) {
+        winner = "player";
+        console.log(winner);
+    }
+
+    if ((playerChoice === "rock" && computerMove === "paper") || (playerChoice === "paper" && computerMove === "scissors") || (playerChoice === "scissors" && computerMove === "rock")) {
+        winner = "computer";
+        console.log(winner);
+    }
+
+    return winner;
+}
+
+var playerChoices = document.querySelectorAll(".choice");
+  for (i = 0; i < playerChoices.length; i++) {
+    playerChoices.item(i).addEventListener("click", playRound) 
+    };
+
+    function game() {
+        let playerScore = 0;
+        let computerScore = 0;
+        //let roundWinner = playRound(playerChoice, computerMove);
+        //use roundwinner from playRound()
+        let gameWinner = "";
+        
+        for (let i = 0; i < 5; i++) {
+    
+            if (roundWinner === "tie") {
+                playerScore++;
+                computerScore++;
+            }
+            else if (roundWinner === "player") {
+                playerScore++;
+            }
+            else {
+                computerScore++;
+            }
+        }
+    
+        if (playerScore === computerScore) {
+            gameWinner = "It is a tie";
+        }
+        else if (playerScore > computerScore) {
+            gameWinner = "player wins!";
+        }
+        else {
+            gameWinner = "computer wins!";
+        }
+    
+        return gameWinner;
+    }
+  //returns the player choice for each round
+
+  //playerChoices.addEventListener("click", playRound);
 
 //   rockChoice.addEventListener("click", () => {
 //     playerChoice = "rock";
@@ -97,11 +154,7 @@ function getComputerChoice () {
 // });
 
 
-
-
-
-
-let playerChoice = "";
+//let playerChoice = "";
 
 let result = "";
 
@@ -109,22 +162,7 @@ let computerMove = "";
 
 let winner = "";
 //plays a single round of the game
-function playRound(playerSelection, computerSelection) {
 
-    if (playerChoice === computerMove) {
-        winner = "tie";
-    }
-
-    if ((playerChoice === "rock" && computerMove === "scissors") || (playerChoice === "paper" && computerMove === "rock") || (playerChoice === "scissors" && computerMove === "paper")) {
-        winner = "player";
-    }
-
-    if ((playerChoice === "rock" && computerMove === "paper") || (playerChoice === "paper" && computerMove === "scissors") || (playerChoice === "scissors" && computerMove === "rock")) {
-        winner = "computer";
-    }
-
-    return winner;
-}
 
 function displayResults () {
     let message = "";
@@ -139,40 +177,6 @@ function displayResults () {
         message = "You chose " + playerChoice + ". The computer chose " + computerMove + ". You lose.";
     }
     return message;
-}
-
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    //let roundWinner = playRound(playerChoice, computerMove);
-    //use roundwinner from playRound()
-    let gameWinner = "";
-    
-    for (let i = 0; i < 5; i++) {
-
-        if (roundWinner === "tie") {
-            playerScore++;
-            computerScore++;
-        }
-        else if (roundWinner === "player") {
-            playerScore++;
-        }
-        else {
-            computerScore++;
-        }
-    }
-
-    if (playerScore === computerScore) {
-        gameWinner = "It is a tie";
-    }
-    else if (playerScore > computerScore) {
-        gameWinner = "player wins!";
-    }
-    else {
-        gameWinner = "computer wins!";
-    }
-
-    return gameWinner;
 }
 
 let resultOfRound = document.querySelector(".results");
