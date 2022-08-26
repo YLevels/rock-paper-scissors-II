@@ -17,7 +17,7 @@ body {
     gap: 20px;
 }
 
-.game-container{
+.game-container, .results-container, .play-again{
     display: none;
 }
 
