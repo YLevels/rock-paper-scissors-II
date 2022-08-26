@@ -1,24 +1,18 @@
-//starts the game when "Begin Game" is pushed
 const gameContainer = document.querySelector(".game-container");
 const gameStart = document.querySelector(".begingame")
 const resultsContainer = document.querySelector(".results-container");
 const gamereset = document.querySelector(".play-again");
 const pscore = document.querySelector(".pscore");
 const cscore = document.querySelector(".cscore");
+const resultOfRound = document.querySelector(".results");
 
+//starts the game when "Begin Game" is pushed
 function showGame () {
     gameContainer.style.display="flex";
     resultsContainer.style.display="flex";
     resultsContainer.style.flexDirection="column";
     gameStart.style.display="none";
 }
-
-gameStart.addEventListener("click", showGame);
-
-var playerChoices = document.querySelectorAll(".choice");
-  for (i = 0; i < playerChoices.length; i++) {
-    playerChoices.item(i).addEventListener("click", playRound) 
-    };
 
 //randomly returns either 'rock', 'paper', or 'scissors'
 function getComputerChoice () {
@@ -34,6 +28,14 @@ function getComputerChoice () {
     }
     return computerChoice;
   }
+
+gameStart.addEventListener("click", showGame);
+
+var playerChoices = document.querySelectorAll(".choice");
+  for (i = 0; i < playerChoices.length; i++) {
+    playerChoices.item(i).addEventListener("click", playRound) 
+    };
+
 
 //gets playerChoice by click on button
 let playerChoice = "";
@@ -139,121 +141,6 @@ function displayResults (winner) {
     }
     return message;
 }
-
-let resultOfRound = document.querySelector(".results");
-
-function updateScore() {
-    if (result === "player") {
-        playerScore++;
-        return playerScore;
-    }
-    if (result === "computer") {
-        computerScore++;
-        return computerScore;
-    }
-    else return;
-}
-
-// function game() {
-
-//         //let roundWinner = playRound(playerChoice, computerMove);
-//         //use roundwinner from playRound()
-
-        
-
-    
-
-// }
-  //returns the player choice for each round
-
-  //playerChoices.addEventListener("click", playRound);
-
-//   rockChoice.addEventListener("click", () => {
-//     playerChoice = "rock";
-//     computerMove = getComputerChoice();
-//     result = playRound(playerChoice, computerMove);
-//     resultOfRound.textContent = displayResults();
-//     updateScore();
-//     declareWinner();
-//     console.log(playerScore);
-// console.log(computerScore);
-// console.log(winner);
-
-// });
-
-// paperChoice.addEventListener("click", () => {
-//     playerChoice = "paper";
-//     computerMove = getComputerChoice();
-//     result = playRound(playerChoice, computerMove);
-//     resultOfRound.textContent = displayResults();
-//     updateScore();
-//     declareWinner();
-//     console.log(playerScore);
-// console.log(computerScore);
-// console.log(winner);
-    //result = playRound(playerChoice, computerMove);
-    //resultOfRound.textContent = displayResults();
-// });
-
-// scissorsChoice.addEventListener("click", () => {
-//     playerChoice = "scissors";
-//     computerMove = getComputerChoice();
-//     result = playRound(playerChoice, computerMove);
-//     resultOfRound.textContent = displayResults();
-//     updateScore();
-//     declareWinner();
-//     console.log(playerScore);
-// console.log(computerScore);
-// console.log(winner);
-    //result = playRound(playerChoice, computerMove);
-    //resultOfRound.textContent = displayResults();
-// });
-
-
-//let playerChoice = "";
-
-let result = "";
-
-
-
-//plays a single round of the game
-
-
-
-//let playerScore = parseInt(document.querySelector(".pscore").textContent);
-//let computerScore = parseInt(document.querySelector(".cscore").textContent);
-
-function trackPlayerScore () {
-    //if (winner !== "player") return;
-    if (winner === "player") {
-        playerScore++;
-    } 
-    return playerScore;
-}
-
-function trackComputerScore () {
-    //if (winner !== "computer") return;
-    if (winner === "computer") {
-        computerScore++;
-    }
-    return computerScore;
-}
-
-
-
-function declareWinner () {
-    if (playerScore < 5 || computerScore < 5) {
-        return;
-    }
-    if (playerScore === 5) {
-        winner = player;
-    }
-    if (computerScore === 5) {
-        winner = computer;
-    }
-    return winner;
-}
-
 
 
 
