@@ -121,6 +121,7 @@ if (roundNumber > 5) {
     }
     gameContainer.style.display="none";
     gamereset.style.display="flex";
+    gamereset.addEventListener("click", function(){location.reload()});
     resultOfGame.textContent = gameWinner;
     console.log(gameWinner);
 
