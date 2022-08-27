@@ -76,11 +76,10 @@ function playRound() {
     
 if (roundNumber <= 5) {
     computerMove = getComputerChoice();
-    results = displayResults(winner);
 
     if (playerChoice === computerMove) {
         winner = "tie";
-
+        results = displayResults(winner);
         resultOfRound.textContent += results;
         console.log("Player Score is:" + playerScore);
         console.log("Computer Score is:" + computerScore);
@@ -89,7 +88,8 @@ if (roundNumber <= 5) {
     }
 
     if ((playerChoice === "rock" && computerMove === "scissors") || (playerChoice === "paper" && computerMove === "rock") || (playerChoice === "scissors" && computerMove === "paper")) {
-        winner = "player";
+        winner = "player";        
+        results = displayResults(winner);
         resultOfRound.textContent += results;
         playerScore++;
         pscore.textContent = playerScore;
@@ -102,6 +102,7 @@ if (roundNumber <= 5) {
 
     if ((playerChoice === "rock" && computerMove === "paper") || (playerChoice === "paper" && computerMove === "scissors") || (playerChoice === "scissors" && computerMove === "rock")) {
         winner = "computer";
+        results = displayResults(winner);
         resultOfRound.textContent += results;
         computerScore++;
         cscore.textContent = computerScore;
