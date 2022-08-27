@@ -67,17 +67,21 @@ let playerScore = 0;
 let computerScore = 0;
 let computerMove = "";
 let gameWinner = "";
-let roundNumber = 1;  
+let roundNumber = 1;
+let results = "";  
+
+resultOfRound.setAttribute("style", "white-space: pre-wrap;");
 
 function playRound() {
     
 if (roundNumber <= 5) {
     computerMove = getComputerChoice();
+    results = displayResults(winner);
 
     if (playerChoice === computerMove) {
         winner = "tie";
 
-        resultOfRound.textContent += "\n" + displayResults(winner);
+        resultOfRound.textContent += results;
         console.log("Player Score is:" + playerScore);
         console.log("Computer Score is:" + computerScore);
         console.log("The winner of" + roundNumber + "is: noone. It is a " + winner);
@@ -86,7 +90,7 @@ if (roundNumber <= 5) {
 
     if ((playerChoice === "rock" && computerMove === "scissors") || (playerChoice === "paper" && computerMove === "rock") || (playerChoice === "scissors" && computerMove === "paper")) {
         winner = "player";
-        resultOfRound.textContent += "\n" + displayResults(winner);
+        resultOfRound.textContent += results;
         playerScore++;
         pscore.textContent = playerScore;
         console.log("Player Score is:" + playerScore);
@@ -98,7 +102,7 @@ if (roundNumber <= 5) {
 
     if ((playerChoice === "rock" && computerMove === "paper") || (playerChoice === "paper" && computerMove === "scissors") || (playerChoice === "scissors" && computerMove === "rock")) {
         winner = "computer";
-        resultOfRound.textContent += "\n" + displayResults(winner);
+        resultOfRound.textContent += results;
         computerScore++;
         cscore.textContent = computerScore;
         console.log("Player Score is:" + playerScore);
@@ -134,13 +138,13 @@ function displayResults (winner) {
     let message = "";
 
     if (winner === "tie") {
-        message = "You chose " + playerChoice + ". The computer chose " + computerMove + ". It is a tie.";
+        message = "\r\nRound" + roundNumber + ": You chose " + playerChoice + ". The computer chose " + computerMove + ". It is a tie.";
     }
     else if (winner === "player") {
-        message = "You chose " + playerChoice + ". The computer chose " + computerMove + ". You win!";
+        message = "\r\nRound" + roundNumber + ": You chose " + playerChoice + ". The computer chose " + computerMove + ". You win!";
     }
     else {
-        message = "You chose " + playerChoice + ". The computer chose " + computerMove + ". You lose.";
+        message = "\r\nRound" + roundNumber + ": You chose " + playerChoice + ". The computer chose " + computerMove + ". You lose.";
     }
     return message;
 }
