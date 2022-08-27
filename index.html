@@ -2,9 +2,54 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Rock Paper Scissors in the Console</title>
+  <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="header">
+    <div class="title">Rock Paper Scissors</div>
+    <div class="directions">Play 5 round of Rock Paper Scissors against the computer!</div>
+    <button class="begingame">Begin Game</button>
+  </div>
+  <div class="game-container">
+    <div class="directions">Make your selection below:</div>
+    <div class="choices">
+      <div class="choice">
+        <input type="image" src="images/rock.png" id="rock-button" value="rock"></input>
+        <span>rock</span>
+      </div>
+      <div class="choice">
+        <input type="image" src="images/paper.png" id="paper-button" value="paper"></input>
+        <span>paper</span>
+      </div>
+      <div class="choice">
+        <input type="image" src="images/scissors.png" id="scissors-button" value="scissors"></input>
+        <span>scissors</span>
+      </div>
+    </div>
+    </div>
+    <div class="results-container">
+      <div class="round-results">
+        <div class="results">Result of each round:</div>
+      </div>
+      <div class="score-keeper">
+        <div class="score-container">
+          <div class="player-score">Your Score:</div>
+          <div class="pscore">0</div>
+        </div>
+        <div class="score-container">
+          <div class="computer-score">Computer's Score:</div>
+          <div class="cscore">0</div>
+        </div>
+        <div class="result-of-the-game">
+
+        </div>
+      </div>
+  </div>
+    <div class="play-again">
+      <button class="playagain">Play Again</button>
+    </div>
+  </div>
 </body>
 <script src="script.js"></script>
 </html>
